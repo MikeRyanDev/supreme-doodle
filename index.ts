@@ -30,7 +30,13 @@ async function main() {
 
       const nextDate: string = response.data;
 
-      if (nextDate.startsWith("March 17") || nextDate.startsWith("March 18")) {
+      const days = [22, 23, 24, 25, 26, 27, 28];
+
+      if (
+        days
+          .map((day) => `March ${day}`)
+          .some((day) => nextDate.startsWith(day))
+      ) {
         console.log(chalk.red.bold.bgBlack(getScheduleUrl(id)));
       }
     }
